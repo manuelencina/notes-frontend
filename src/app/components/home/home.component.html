@@ -1,0 +1,38 @@
+<div class="container">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width field" >
+      <mat-label>Título</mat-label>
+      <input matInput placeholder="Ingrese el título" formControlName="title" type="text">
+    </mat-form-field>
+    <div *ngIf="submitted && f.title.errors">
+      <div *ngIf="f.title.errors?.required">
+        <span class="error">Debe completar el campo título</span>
+      </div>
+    </div>
+    <mat-form-field appearance="fill" class="field">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="state">
+        <mat-option *ngFor="let state of states" [value]="state.value">
+          {{state.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="submitted && f.title.errors">
+      <div *ngIf="f.state.errors?.required">
+        <span class="error">Debe seleccionar un estado</span>
+      </div>
+    </div>
+    <mat-form-field class="field">
+      <textarea matInput placeholder="Descripción" formControlName="description"></textarea>
+    </mat-form-field>
+    <div *ngIf="submitted && f.title.errors">
+      <div *ngIf="f.description.errors?.required">
+        <span class="error">Debe completar el campo descripción</span>
+      </div>
+    </div>
+    <div class="button-container field">
+      <button *ngIf="idParam" type="button" mat-raised-button class="button" (click)="deleteNote(id)" >Eliminar</button>
+      <button type="submit" mat-raised-button class="button" >Actualizar</button>
+    </div>
+  </form>
+</div>
