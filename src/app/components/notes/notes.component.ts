@@ -18,7 +18,7 @@ export class NotesComponent implements OnInit, OnDestroy {
   aux: Array<any>;
   open: Array<Note> = [];
   inProgress: Array<Note> = [];
-  close: Array<Note> = [];
+  closed: Array<Note> = [];
   private notesSubscription: Subscription;
   loadedData: Promise<boolean>;
   notesSubject = new Subject<Note[]>();
@@ -46,7 +46,7 @@ export class NotesComponent implements OnInit, OnDestroy {
         this.notes = res;
         this.open = this.notes.filter(note => note.state === 'abierto');
         this.inProgress = this.notes.filter(note => note.state === 'en proceso');
-        this.close = this.notes.filter(note => note.state === 'cerrado');
+        this.closed = this.notes.filter(note => note.state === 'cerrado');
       });
   }
 

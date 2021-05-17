@@ -2,7 +2,7 @@
   <div  class="main-container">
     <div class="grid-container">
       <div *ngFor="let note of open" class="column">
-        <mat-card *ngIf="note.state === 'abierto'" class="row  bg-green" (click)="editNote(note.id)">
+        <mat-card *ngIf="note.state === 'abierto'" class="card open" (click)="editNote(note.id)">
           <div>
             <h3 class="title">{{note?.title}}</h3>
             <p class="description">{{note.description}}</p>
@@ -12,7 +12,7 @@
     </div>
     <div class="grid-container">
       <div *ngFor="let note of inProgress" class="column">
-        <mat-card *ngIf="note.state === 'en proceso'" class="row bg-yellow" (click)="editNote(note.id)">
+        <mat-card *ngIf="note.state === 'en proceso'" class="card inProgress" (click)="editNote(note.id)">
           <div>
             <h3 class="title">{{note.title}}</h3>
             <p class="description">{{note.description}}</p>
@@ -21,8 +21,8 @@
       </div>
     </div>
     <div class="grid-container">
-      <div *ngFor="let note of close" class="column">
-        <mat-card *ngIf="note.state === 'cerrado'" class="row bg-red" (click)="editNote(note.id)">
+      <div *ngFor="let note of closed" class="column">
+        <mat-card *ngIf="note.state === 'cerrado'" class="card closed" (click)="editNote(note.id)">
           <div>
             <h3 class="title">{{note.title}}</h3>
             <p class="description">{{note.description}}</p>

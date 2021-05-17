@@ -1,3 +1,9 @@
+$form-bg: #f9f5e5;
+$form-shadow: #95a5ff;
+$label-color: #7f7f7f;
+$button-bg: #ffa481;
+$button-color: #1e1f26;
+
 .container {
   max-width: 70%;
   margin: 0 auto;
@@ -6,7 +12,7 @@
 .field {
   margin-top: 3em;
 }
-.example-full-width {
+.input-full-width {
   width: 100%;
 }
 .form {
@@ -16,13 +22,33 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  border: 2px solid rgba(0,0,0,1);
+  border-radius: 10px;
+  padding: 1em;
+  background-color: $form-bg;
+  box-shadow: 6px 6px 1px $form-shadow, 6px 6px 1px 2px rgba(0,0,0,1);
+  transition: .5s ease;
 }
+.form:hover {
+  box-shadow: 15px 15px 1px $form-shadow, 15px 15px 1px 2px rgba(0,0,0,1);
+  transition: .5s ease;
+}
+.mat-label {
+  color: $label-color;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
 .button-container {
   display: flex;
   justify-content: flex-end;
 }
 .button {
   width: 30%;
+  background-color: $button-bg;
+  color: $button-color;
+  font-weight: 400;
+  border: 1px solid #1e1f26;
 }
 .error {
   color: red;

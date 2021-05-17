@@ -1,63 +1,93 @@
+$size-shadow: 5px 5px 0px 0px;
+$size-shadow-hover: 15px 15px 0px 0px;
+
+$closed-bg: #e15f5f;
+$closed-bg-shadow: #fa9797;
+$closed-shadow: $size-shadow lighten($closed-bg-shadow, 5%);
+$closed-shadow-hover: $size-shadow-hover lighten($closed-bg-shadow, 5%);
+
+$inProgress-bg: #099d84;
+$inProgress-bg-shadow: #9ac5be;
+$inProgress-shadow: $size-shadow lighten($inProgress-bg-shadow, 5%);
+$inProgress-shadow-hover: $size-shadow-hover lighten($inProgress-bg-shadow, 5%);
+
+$open-bg: #8762c9;
+$open-bg-shadow: #bc9af6;
+$open-shadow: $size-shadow lighten($open-bg-shadow, 5%);
+$open-shadow-hover: $size-shadow-hover lighten($open-bg-shadow, 5%);
+
 .container {
   display: flex;
   flex-direction: column;
 }
-
 .main-container {
   display: flex;
   width: 90%;
-  // height: 70vh;
   margin: 0 auto;
 }
-
 .grid-container {
-  // width: 80%;
   width: 25%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
-
 .column {
   width: 30%;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-
-.row {
-  width: 100%;
+.card {
+  width: 80%;
   display: block;
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-align: center;
   margin: 1em 0;
+  margin: 1em auto;
   color: #fff;
   cursor: pointer;
 }
-
-.bg-red {
-  background-color: #fe6d73;
-  background-color: #e15f5f;
+.closed {
+  background-color: $closed-bg;
+  box-shadow: $closed-shadow;
+  opacity: 1;
+  transition: .5s ease;
 }
-.bg-yellow {
-  background-color: #ffcb77;
-  background-color: #099d84;
+.closed:hover {
+  box-shadow: $closed-shadow-hover;
+  transition: .5s ease;
+  opacity: .7;
 }
-.bg-green {
-  background-color: #17c3b2;
-  background-color: #8762c9;
+.inProgress {
+  background-color: $inProgress-bg;
+  box-shadow: $inProgress-shadow;
+  opacity: 1;
+  transition: .5s ease;
 }
-
+.inProgress:hover {
+  box-shadow: $inProgress-shadow-hover;
+  transition: .5s ease;
+  opacity: .7;
+}
+.open {
+  background-color: $open-bg;
+  box-shadow: $open-shadow;
+  opacity: 1;
+  transition: .5s ease;
+}
+.open:hover {
+  box-shadow: $open-shadow-hover;
+  transition: .5s ease;
+  opacity: .7;
+}
 .title {
   text-align: left;
 }
-
 .description {
   text-align: left;
 }
-
 .del-icon {
   cursor: pointer;
 }
