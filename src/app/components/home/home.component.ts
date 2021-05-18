@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first, timeout } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 
 import { State } from '../../interfaces/state';
 import { Note } from '../../interfaces/note';
-import { GetTasksService } from '../../services/get-tasks.service';
+import { NoteService } from '../../services/note.service';
 
 @Component({
   selector: 'app-home',
@@ -20,11 +20,12 @@ export class HomeComponent implements OnInit {
   idParam: boolean = false;
   id: string;
   note: Note;
+  state: string;
   response: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    private noteService: GetTasksService,
+    private noteService: NoteService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
       {value: 'en proceso'},
       {value: 'cerrado'}
     ];
+    this.state = this.noteService.noteState;
   }
 
   ngOnInit() {
@@ -84,9 +86,7 @@ export class HomeComponent implements OnInit {
     this.noteService.EditNote(this.id, this.form.value)
       .pipe(first())
       .subscribe(res => {
-        if (res.ok) {
-          this.router.navigate(['/notes']);
-        }
+        this.router.navigate(['/notes']);
       });
   }
 

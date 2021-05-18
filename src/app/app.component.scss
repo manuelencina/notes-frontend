@@ -1,13 +1,17 @@
 mat-toolbar {
   display: flex;
   justify-content: center;
-  // background-color: #fff6af;
   background-color: transparent;
   margin-bottom: 2em;
 }
 .main-title {
   text-align: center;
   padding: 1em;
-  color: #555;
   font-weight: 500;
+}
+.main-title a {
+  text-decoration: none;
+  color: #736e5f;
+  font-size: 2rem;
+  font-weight: 900;
 }

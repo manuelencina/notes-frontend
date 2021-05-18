@@ -32,8 +32,8 @@
       </div>
     </div>
     <div class="button-container field">
-      <button *ngIf="idParam" type="button" mat-raised-button class="button" (click)="deleteNote(id)" >Eliminar</button>
-      <button type="submit" mat-raised-button class="button" >Actualizar</button>
+      <button *ngIf="idParam" type="button" mat-raised-button class="button" (click)="deleteNote(id)">Eliminar</button>
+      <button *ngIf="state !== 'cerrado'" type="submit" mat-raised-button class="button">Actualizar</button>
     </div>
   </form>
 </div>

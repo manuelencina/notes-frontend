@@ -3,8 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription, Subject } from 'rxjs';
 import { first, timeout } from 'rxjs/operators';
 
-import { GetTasksService } from '../../services/get-tasks.service';
-import { NoteGetResolveService } from '../../services/note-get-resolve.service';
+import { NoteService } from '../../services/note.service';
 import { Note } from '../../interfaces/note';
 
 @Component({
@@ -20,28 +19,16 @@ export class NotesComponent implements OnInit, OnDestroy {
   inProgress: Array<Note> = [];
   closed: Array<Note> = [];
   private notesSubscription: Subscription;
-  loadedData: Promise<boolean>;
   notesSubject = new Subject<Note[]>();
 
   constructor(
-    private notesService: GetTasksService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private noteService: NoteService
   ) { }
 
   ngOnInit(): void {
-
-    // this.notes = this.route.snapshot.data.notes;
-    // console.log('Notas',this.notes);
-    // this.activatedRoute.data.subscribe((data) => {
-    //   console.log(data)
-    //   this.notes = data.notes;
-    //   this.open = this.notes.filter(note => note.state === 'abierto');
-    //   this.inProgress = this.notes.filter(note => note.state === 'en proceso');
-    //   this.close = this.notes.filter(note => note.state === 'cerrado');
-    // });
-
-    this.notesSubscription = this.notesService.GetNotes()
+    this.notesSubscription = this.noteService.GetNotes()
       .subscribe(res => {
         this.notes = res;
         this.open = this.notes.filter(note => note.state === 'abierto');
@@ -50,7 +37,8 @@ export class NotesComponent implements OnInit, OnDestroy {
       });
   }
 
-  editNote(id: any) {
+  editNote(id: any, state: any) {
+    this.noteService.noteState = state;
     this.router.navigate([`/edit/${id}`]);
   }
 

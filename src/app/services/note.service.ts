@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 import { Note } from '../interfaces/note';
 
@@ -12,6 +10,7 @@ export class NoteService {
 
   endPoint: string = "http://localhost:4000/api/v1";
   noteEdited: Note;
+  noteState: string;
 
   constructor(private service: HttpClient) { }
 
